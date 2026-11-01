@@ -1,0 +1,16 @@
+{
+  "name": "Nekoneko.NNLightingSync.Runtime",
+  "rootNamespace": "Nekoneko.NNLightingSync",
+  "references": [
+    "nadena.dev.ndmf.runtime"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
