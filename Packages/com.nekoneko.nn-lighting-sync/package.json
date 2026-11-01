@@ -1,0 +1,28 @@
+{
+  "name": "com.nekoneko.nn-lighting-sync",
+  "displayName": "NN - Lighting Sync",
+  "version": "1.1.0",
+  "unity": "2022.3",
+  "description": "Automatically syncs lilToon lighting settings from the avatar to outfit materials at NDMF build time without modifying the original prefab or materials.",
+  "author": {
+    "name": "ねこねこ"
+  },
+  "license": "LicenseRef-Nekoneko",
+  "keywords": [
+    "VRChat",
+    "Avatar",
+    "lilToon",
+    "NDMF",
+    "Lighting"
+  ],
+  "vpmDependencies": {
+    "com.vrchat.avatars": ">=3.5.0 <4.0.0",
+    "nadena.dev.ndmf": ">=1.7.0 <2.0.0-a",
+    "jp.lilxyzw.liltoon": ">=1.2.0 <3.0.0-a"
+  },
+  "legacyFolders": {
+    "Assets\\nekoneko\\NNLightingSync": "523c1091d5a1086fdf3c1e84cc3a3124",
+    "Assets\\nekoneko\\NN - Lighting Sync": "523c1091d5a1086fdf3c1e84cc3a3124",
+    "Assets\\nekoneko\\NNLightingSync_Upgrade_1_1_0": "64b770f5bcb84a4ba04f4c930a1d1100"
+  }
+}
