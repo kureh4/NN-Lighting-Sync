@@ -5,7 +5,8 @@
   "unity": "2022.3",
   "description": "Automatically syncs lilToon lighting settings from the avatar to outfit materials at NDMF build time without modifying the original prefab or materials.",
   "author": {
-    "name": "ねこねこ"
+    "name": "ねこねこ",
+    "url": "https://github.com/kureh4/NN-Lighting-Sync"
   },
   "license": "LicenseRef-Nekoneko",
   "keywords": [
