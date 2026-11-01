@@ -1,0 +1,66 @@
+name: Build Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "Packages/com.nekoneko.nn-lighting-sync/**"
+
+permissions:
+  contents: write
+
+env:
+  PACKAGE_NAME: com.nekoneko.nn-lighting-sync
+  PACKAGE_PATH: Packages/com.nekoneko.nn-lighting-sync
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get Version
+        id: version
+        shell: bash
+        run: |
+          VERSION=$(jq -r '.version' "$PACKAGE_PATH/package.json")
+          echo "value=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "ZIP_FILE=$PACKAGE_NAME-$VERSION.zip" >> "$GITHUB_ENV"
+          echo "UNITYPACKAGE_FILE=$PACKAGE_NAME-$VERSION.unitypackage" >> "$GITHUB_ENV"
+
+      - name: Check Version Tag
+        shell: bash
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/${{ steps.version.outputs.value }}" >/dev/null 2>&1; then
+            echo "Tag ${{ steps.version.outputs.value }} already exists. Bump package.json version before publishing."
+            exit 1
+          fi
+
+      - name: Create Package Zip
+        working-directory: ${{ env.PACKAGE_PATH }}
+        shell: bash
+        run: zip -r "${{ github.workspace }}/${{ env.ZIP_FILE }}" .
+
+      - name: Track Package Meta Files
+        shell: bash
+        run: find "$PACKAGE_PATH/" -name '*.meta' > metaList
+
+      - name: Create UnityPackage
+        uses: pCYSl5EDgo/create-unitypackage@v1.2.3
+        with:
+          package-path: ${{ env.UNITYPACKAGE_FILE }}
+          include-files: metaList
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.value }}
+          name: NN - Lighting Sync v${{ steps.version.outputs.value }}
+          generate_release_notes: true
+          files: |
+            ${{ env.ZIP_FILE }}
+            ${{ env.UNITYPACKAGE_FILE }}
+            ${{ env.PACKAGE_PATH }}/package.json
