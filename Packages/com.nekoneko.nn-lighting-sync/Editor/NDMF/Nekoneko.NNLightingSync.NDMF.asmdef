@@ -1,0 +1,27 @@
+{
+  "name": "Nekoneko.NNLightingSync.NDMF",
+  "rootNamespace": "Nekoneko.NNLightingSync.Editor.NDMF",
+  "references": [
+    "Nekoneko.NNLightingSync.Runtime",
+    "nadena.dev.ndmf"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [
+    "NNLS_NDMF_PRESENT"
+  ],
+  "versionDefines": [
+    {
+      "name": "nadena.dev.ndmf",
+      "expression": "(0.0.0,999.9.9)",
+      "define": "NNLS_NDMF_PRESENT"
+    }
+  ],
+  "noEngineReferences": false
+}
