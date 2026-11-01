@@ -2,6 +2,12 @@ name: Build VPM Listing
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "Website/**"
+      - ".github/workflows/build-listing.yml"
   workflow_run:
     workflows:
       - Build Release
